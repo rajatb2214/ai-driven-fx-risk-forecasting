@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": "usr_48e306fdcd24a5d7",
+      "name": "Aarav Admin",
+      "email": "admin@ethara.ai",
+      "role": "admin",
+      "passwordHash": "617931a21a4c4b6623b32e2b4a65a4e9:e9581cb7e4542240bd6f7074450da67a96a0e7e59cacd439d8dbf1dc0dbf1ef09ac6c922944d6105fbcc556ef2f9fb516af51a3a9f26acba5c40293e8e5cfde4",
+      "createdAt": "2026-05-08T10:13:10.935Z"
+    },
+    {
+      "id": "usr_557117b29c2b50b4",
+      "name": "Meera Manager",
+      "email": "manager@ethara.ai",
+      "role": "manager",
+      "passwordHash": "d05417a0627e3ca629c012230cfa6c1f:dffae672cb86efd0cbf37795f382631dbbd6074294b6bc54db49db25e73c9ccfd3122c5820a5572dbfa1eb10ca5bb5dd351bf930b9ba060a3eb747a0f153c738",
+      "createdAt": "2026-05-08T10:13:11.011Z"
+    },
+    {
+      "id": "usr_dd1218974d217c74",
+      "name": "Rajat Member",
+      "email": "member@ethara.ai",
+      "role": "member",
+      "passwordHash": "78422704e64b8f4cce31bc037ab84c2f:57900de90454b6dfbac618b15aefee8ab9719edfbc0335a7086f3a7c58d3c275e424cda9eba9b73de1f6bb919b0452e092cacc829192af5c5147bf390c8f0876",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "prj_974bb85f20ada913",
+      "name": "Ethara Launch Workspace",
+      "description": "Coordinate launch work across design, backend, and QA.",
+      "status": "active",
+      "ownerId": "usr_557117b29c2b50b4",
+      "dueDate": "2026-05-18",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    },
+    {
+      "id": "prj_6297b43321848463",
+      "name": "Candidate Review Portal",
+      "description": "Build review screens, scorecards, and operational reports.",
+      "status": "planning",
+      "ownerId": "usr_48e306fdcd24a5d7",
+      "dueDate": "2026-05-24",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "tsk_e1266c2a08817947",
+      "projectId": "prj_974bb85f20ada913",
+      "title": "Create authenticated dashboard shell",
+      "description": "Protected routes with responsive navigation and role-aware actions.",
+      "status": "done",
+      "priority": "high",
+      "assigneeId": "usr_dd1218974d217c74",
+      "dueDate": "2026-05-09",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    },
+    {
+      "id": "tsk_2d2d4eb994b5c255",
+      "projectId": "prj_974bb85f20ada913",
+      "title": "Add API validation and error responses",
+      "description": "Return useful messages for missing fields and invalid role actions.",
+      "status": "review",
+      "priority": "high",
+      "assigneeId": "usr_557117b29c2b50b4",
+      "dueDate": "2026-05-10",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    },
+    {
+      "id": "tsk_4995068a0c016c07",
+      "projectId": "prj_6297b43321848463",
+      "title": "Prepare analytics cards",
+      "description": "Show completion, workload, overdue, and priority breakdowns.",
+      "status": "in-progress",
+      "priority": "medium",
+      "assigneeId": "usr_dd1218974d217c74",
+      "dueDate": "2026-05-12",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    },
+    {
+      "id": "tsk_d4c8ce6eb107f6a9",
+      "projectId": "prj_6297b43321848463",
+      "title": "Mobile polish pass",
+      "description": "Tighten spacing, empty states, and compact form layout.",
+      "status": "todo",
+      "priority": "low",
+      "assigneeId": "usr_557117b29c2b50b4",
+      "dueDate": "2026-05-16",
+      "createdAt": "2026-05-08T10:13:11.080Z"
+    }
+  ],
+  "sessions": []
+}

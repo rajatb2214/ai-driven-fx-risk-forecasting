@@ -1,0 +1,17 @@
+{
+  "name": "ethara-fullstack-assessment",
+  "version": "1.0.0",
+  "description": "Full-stack project and task management assessment app with auth, RBAC, REST APIs, and responsive UI.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "full-stack",
+    "assessment",
+    "project-management"
+  ],
+  "author": "",
+  "license": "MIT"
+}
