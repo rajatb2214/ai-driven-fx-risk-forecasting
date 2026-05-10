@@ -3,11 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ethara Workbench</title>
+    <title>AI-Driven FX Risk Forecasting</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main id="app"></main>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">EUR/USD quantitative finance dashboard</p>
+        <h1>AI-Driven FX Risk Forecasting</h1>
+      </div>
+      <div class="status">GBM + Monte Carlo + Barrier Options</div>
+    </header>
+
+    <main class="layout">
+      <aside class="controls" aria-label="Simulation controls">
+        <label>
+          Latest EUR/USD
+          <input id="spot" type="number" min="0.5" max="2" step="0.0001" value="1.1156" />
+        </label>
+        <label>
+          Forecast horizon
+          <input id="horizon" type="number" min="1" max="10" step="1" value="3" />
+        </label>
+        <label>
+          Monthly steps
+          <input id="steps" type="number" min="12" max="120" step="12" value="36" />
+        </label>
+        <label>
+          Simulation paths
+          <input id="paths" type="number" min="1000" max="50000" step="1000" value="10000" />
+        </label>
+        <label>
+          Strike
+          <input id="strike" type="number" min="0.5" max="2" step="0.01" value="1.17" />
+        </label>
+        <label>
+          Call barrier
+          <input id="barrierCall" type="number" min="0.5" max="2" step="0.01" value="1.07" />
+        </label>
+        <label>
+          Put barrier
+          <input id="barrierPut" type="number" min="0.5" max="2" step="0.01" value="1.03" />
+        </label>
+        <button id="run" type="button">Run Simulation</button>
+      </aside>
+
+      <section class="workspace">
+        <section class="metrics" aria-label="Risk summary">
+          <article>
+            <span>Expected 3Y EUR/USD</span>
+            <strong id="expected">-</strong>
+          </article>
+          <article>
+            <span>95% VaR rate</span>
+            <strong id="varRate">-</strong>
+          </article>
+          <article>
+            <span>Down-in call</span>
+            <strong id="callPrice">-</strong>
+          </article>
+          <article>
+            <span>Down-in put</span>
+            <strong id="putPrice">-</strong>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h2>Monte Carlo FX Paths</h2>
+            <span id="modelStats">-</span>
+          </div>
+          <canvas id="pathsChart" width="1000" height="360"></canvas>
+        </section>
+
+        <section class="split">
+          <article class="panel">
+            <div class="panel-title">
+              <h2>Terminal Distribution</h2>
+              <span>VaR marker shown in red</span>
+            </div>
+            <canvas id="histChart" width="640" height="330"></canvas>
+          </article>
+          <article class="panel">
+            <div class="panel-title">
+              <h2>Risk Metrics</h2>
+              <span>Current scenario</span>
+            </div>
+            <div id="table" class="table"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
     <script src="/app.js" defer></script>
   </body>
 </html>

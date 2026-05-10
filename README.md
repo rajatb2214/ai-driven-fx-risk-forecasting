@@ -1,54 +1,66 @@
-# Ethara Workbench
+# AI-Driven FX Risk Forecasting and Exotic Option Pricing
 
-Full-stack project and task management assessment app built with zero external dependencies.
+This project implements the PDF brief as working R code plus a running web dashboard.
 
-## Run
+## What It Does
 
-```bash
+- Loads historical EUR/USD data from `data/eurusd_sample.csv`
+- Calculates log returns, annualized drift, and annualized volatility
+- Simulates future EUR/USD paths using Geometric Brownian Motion
+- Estimates terminal distribution risk and 95% Value at Risk
+- Prices down-and-in call and put barrier options with Monte Carlo pricing
+- Provides an R Shiny dashboard in `app.R`
+- Provides a browser-ready dashboard in `public/` for machines without R installed
+
+## Run The Website
+
+```powershell
 npm start
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-## Demo Accounts
+```text
+http://localhost:3000
+```
 
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | admin@ethara.ai | Admin@123 |
-| Manager | manager@ethara.ai | Manager@123 |
-| Member | member@ethara.ai | Member@123 |
+## Run The R Analysis
 
-## Features
+Install R, then run:
 
-- Authentication with login, registration, session tokens, and protected APIs.
-- Role-based access control:
-  - Admin can create and delete projects/tasks.
-  - Manager can create projects/tasks and manage tasks.
-  - Member can view visible work and update assigned task status.
-- Project management with owner, status, due date, progress, and task totals.
-- Task management with project relationship, assignee, priority, status, due date, and status updates.
-- Dashboard with totals, completion percentage, overdue work, status chart, priority chart, and upcoming tasks.
-- Validation, loading, empty, error, and toast states.
-- Responsive UI for desktop and mobile.
-- JSON persistence in `data/db.json`.
+```powershell
+Rscript run_analysis.R
+```
 
-## REST API
+## Run The Shiny App
 
-- `POST /api/auth/login`
-- `POST /api/auth/register`
-- `GET /api/me`
-- `GET /api/users`
-- `GET /api/dashboard`
-- `GET /api/projects`
-- `POST /api/projects`
-- `GET /api/projects/:id`
-- `PUT /api/projects/:id`
-- `DELETE /api/projects/:id`
-- `GET /api/tasks`
-- `POST /api/tasks`
-- `PUT /api/tasks/:id`
-- `DELETE /api/tasks/:id`
+Install the Shiny package once:
 
-## Notes
+```r
+install.packages("shiny")
+```
 
-The app uses Node's built-in `http`, `fs`, `path`, and `crypto` modules, so no package installation is required.
+Then run:
+
+```powershell
+Rscript -e "shiny::runApp('.', host='127.0.0.1', port=3838)"
+```
+
+Open:
+
+```text
+http://127.0.0.1:3838
+```
+
+## Main Files
+
+- `R/fx_engine.R`: reusable R functions for GBM simulation, VaR, and barrier pricing
+- `app.R`: R Shiny website
+- `run_analysis.R`: command-line R analysis
+- `data/eurusd_sample.csv`: sample EUR/USD monthly prices
+- `public/index.html`, `public/app.js`, `public/styles.css`: local runnable dashboard
+- `server.js`: small Node static server
+
+## Note
+
+R is not currently available on this machine's PATH, so the included Node website is the immediately runnable dashboard. The R files are complete and ready to run once R is installed or added to PATH.

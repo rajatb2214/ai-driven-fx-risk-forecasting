@@ -1,16 +1,19 @@
 {
-  "name": "ethara-fullstack-assessment",
+  "name": "ai-driven-fx-risk-forecasting",
   "version": "1.0.0",
-  "description": "Full-stack project and task management assessment app with auth, RBAC, REST APIs, and responsive UI.",
+  "description": "AI-driven EUR/USD risk forecasting, Monte Carlo simulation, VaR, and barrier option pricing dashboard with R code.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
   "keywords": [
-    "full-stack",
-    "assessment",
-    "project-management"
+    "r",
+    "shiny",
+    "foreign-exchange",
+    "monte-carlo",
+    "value-at-risk",
+    "barrier-options"
   ],
   "author": "",
   "license": "MIT"

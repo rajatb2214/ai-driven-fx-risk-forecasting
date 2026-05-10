@@ -1,0 +1,526 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+3 0 obj
+<< /Length 3243 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 1) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 23 Tf 50 732 Td (AI-Driven FX Risk Forecasting and Exotic) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 23 Tf 50 702 Td (Option Pricing System) Tj ET
+0.15 0.39 0.85 RG 2 w 50 680 m 260 680 l S
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 634 Td (Presentation Document) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 604 Td (This project is a quantitative finance and analytics system for forecasting EUR/USD foreign) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 589 Td (exchange risk and valuing exotic barrier options. It combines classical financial) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 574 Td (engineering with an AI-ready forecasting design.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 535 Td (1. Project Objective) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 505 Td (The main objective is to build a practical system that can analyze EUR/USD exchange rate) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 490 Td (risk, simulate possible future market paths, estimate downside exposure, and price exotic) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 475 Td (options used in foreign exchange hedging.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 450 Td (The system focuses on five goals:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 425 Td (\267 Forecast future EUR/USD movement using stochastic modelling.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 408 Td (\267 Simulate thousands of future exchange-rate paths using Monte Carlo simulation.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 391 Td (\267 Estimate market risk with Value at Risk.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 374 Td (\267 Price down-and-in European barrier call and put options.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 357 Td (\267 Provide a working dashboard for interactive analysis and presentation.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 320 Td (2. Business Problem) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 290 Td (Companies, banks, exporters, importers, and investors are exposed to currency movements. If) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 275 Td (EUR/USD changes unexpectedly, profits, costs, and portfolio values can change quickly. A) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 260 Td (forecasting and risk dashboard helps decision makers understand possible future outcomes) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 245 Td (instead of relying on one fixed prediction.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 220 Td (This project answers practical questions:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 195 Td (\267 What could EUR/USD look like over the next few years?) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 178 Td (\267 What is the expected future exchange rate under current assumptions?) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 161 Td (\267 What is the downside risk at a 95% confidence level?) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 144 Td (\267 What is the value of a barrier option used for hedging?) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 127 Td (\267 How likely is a barrier level to be touched?) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 90 Td (3. Technologies Used) Tj ET
+endstream
+endobj
+4 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 3 0 R >>
+endobj
+5 0 obj
+<< /Length 3181 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 2) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 742 Td (The project was implemented with:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 717 Td (\267 R programming for the financial model source code.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 700 Td (\267 R Shiny for the R-based dashboard.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 683 Td (\267 JavaScript and HTML/CSS for the immediately runnable browser dashboard.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 666 Td (\267 Monte Carlo simulation for path generation and option pricing.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 649 Td (\267 Geometric Brownian Motion for exchange-rate dynamics.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 632 Td (\267 Value at Risk for risk measurement.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 615 Td (\267 An AI-ready architecture that can later add LSTM or transformer forecasting.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 578 Td (4. System Architecture) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 548 Td (The project is divided into seven modules:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 523 Td (\267 Historical EUR/USD data collection.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 506 Td (\267 Log return calculation.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 489 Td (\267 GBM parameter estimation.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 472 Td (\267 Monte Carlo risk simulation.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 455 Td (\267 AI-based forecasting extension design.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 438 Td (\267 Barrier option pricing.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 421 Td (\267 Interactive visualization dashboard.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 398 Td (The R file R/fx_engine.R is the financial modelling engine. The file app.R provides the) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 383 Td (Shiny dashboard. The public folder contains a browser-ready dashboard that runs with npm) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 368 Td (start.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 329 Td (5. Data) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 299 Td (The project uses a sample EUR/USD monthly price dataset stored in data/eurusd_sample.csv.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 284 Td (The dataset contains two columns:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 259 Td (\267 Date: the observation date.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 242 Td (\267 Price: the EUR/USD exchange rate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 219 Td (The application sorts the data by date, validates that all prices are positive, and uses the) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 204 Td (price series to calculate log returns.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 165 Td (6. Log Returns) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 135 Td (Financial models usually work with returns instead of raw prices. This project uses log) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 120 Td (returns:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 95 Td (r\(t\) = log\(S\(t\) / S\(t-1\)\)) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 2859 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 3) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 742 Td (where:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 717 Td (\267 S\(t\) is the current exchange rate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 700 Td (\267 S\(t-1\) is the previous exchange rate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 677 Td (Log returns are useful because they are additive over time and fit naturally with the GBM) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 662 Td (model.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 623 Td (7. Geometric Brownian Motion) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 593 Td (Geometric Brownian Motion models exchange rates as a continuous stochastic process:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 568 Td (dS\(t\) = mu * S\(t\) * dt + sigma * S\(t\) * dW\(t\)) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 543 Td (where:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 518 Td (\267 S\(t\) is the EUR/USD exchange rate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 501 Td (\267 mu is the drift.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 484 Td (\267 sigma is the volatility.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 467 Td (\267 dW\(t\) is Brownian motion.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 444 Td (The discrete simulation formula used in the project is:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 419 Td (S\(t\) = S\(t-1\) * exp\(\(mu - 0.5 * sigma^2\) * dt + sigma * sqrt\(dt\) * Z\)) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 394 Td (where Z is a random standard normal variable.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 355 Td (8. Parameter Estimation) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 325 Td (The system estimates drift and volatility from historical log returns.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 300 Td (Monthly volatility is calculated as the standard deviation of log returns. It is annualized) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 285 Td (using:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 260 Td (annualized volatility = monthly volatility * sqrt\(12\)) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 235 Td (The annualized drift is calculated from the mean log return and volatility adjustment.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 210 Td (These estimated parameters are then used as inputs to the Monte Carlo simulation.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 171 Td (9. Monte Carlo Simulation) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 141 Td (Monte Carlo simulation generates many possible future paths for EUR/USD. Instead of) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 126 Td (producing only one forecast, it produces a distribution of possible outcomes.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 101 Td (In this project, the user can control:) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 3328 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 4) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 742 Td (\267 Forecast horizon.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 725 Td (\267 Number of time steps.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 708 Td (\267 Number of simulation paths.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 691 Td (\267 Latest EUR/USD spot value.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 668 Td (The dashboard plots sample paths and highlights the average simulated path.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 629 Td (10. Risk Metrics) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 599 Td (The system calculates:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 574 Td (\267 Expected terminal EUR/USD value.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 557 Td (\267 Terminal standard deviation.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 540 Td (\267 Worst-case and best-case terminal outcomes.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 523 Td (\267 Probability that the terminal exchange rate is below the current spot.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 506 Td (\267 95% Value at Risk.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 483 Td (The 95% VaR rate is the 5th percentile of the terminal distribution. It represents a) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 468 Td (downside threshold: under the model assumptions, only 5% of simulated outcomes are worse) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 453 Td (than this value.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 414 Td (11. Exotic Barrier Option Pricing) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 384 Td (The project prices down-and-in European call and put options.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 359 Td (A down-and-in option becomes active only if the exchange rate touches or falls below a) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 344 Td (barrier level before maturity. If the barrier is never reached, the option does not) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 329 Td (activate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 304 Td (These products are useful in FX markets because they can be cheaper than vanilla options and) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 289 Td (can be designed around specific hedging views.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 250 Td (12. Option Pricing Method) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 220 Td (The PDF brief mentions the Reiner-Rubinstein analytical model. This implementation includes) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 205 Td (a robust Monte Carlo barrier option pricer in R so the project can run without requiring) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 190 Td (specialized external pricing libraries.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 165 Td (For each simulated option path:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 140 Td (\267 Simulate the EUR/USD path under risk-neutral drift.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 123 Td (\267 Check whether the minimum path value touches the down barrier.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 106 Td (\267 If the barrier is touched, calculate the call or put payoff.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 89 Td (\267 Discount the average payoff back to present value.) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 2909 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 5) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 742 Td (The model also reports the barrier activation probability.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 703 Td (13. AI Forecasting Integration) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 673 Td (The project is AI-ready. The current implementation uses GBM and Monte Carlo simulation as) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 658 Td (the working quantitative core. The AI extension can add an LSTM model or transformer-based) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 643 Td (time-series model later.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 618 Td (The planned AI pipeline is:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 593 Td (\267 Load and clean historical EUR/USD data.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 576 Td (\267 Normalize the price or return series.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 559 Td (\267 Create rolling input sequences.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 542 Td (\267 Train an LSTM model.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 525 Td (\267 Forecast future exchange rates.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 508 Td (\267 Compare AI forecasts against GBM simulation results.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 485 Td (This structure allows the project to compare classical finance models with machine learning) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 470 Td (models.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 431 Td (14. Website Dashboard) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 401 Td (The dashboard provides interactive controls for:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 376 Td (\267 Latest EUR/USD value.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 359 Td (\267 Forecast horizon.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 342 Td (\267 Monthly steps.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 325 Td (\267 Simulation paths.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 308 Td (\267 Option strike.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 291 Td (\267 Call barrier.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 274 Td (\267 Put barrier.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 251 Td (It displays:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 226 Td (\267 Expected future EUR/USD.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 209 Td (\267 95% VaR rate.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 192 Td (\267 Down-and-in call price.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 175 Td (\267 Down-and-in put price.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 158 Td (\267 Monte Carlo FX paths.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 141 Td (\267 Terminal distribution histogram.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 124 Td (\267 Risk metrics table.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 87 Td (15. How To Run) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 2906 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 6) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 742 Td (To run the browser dashboard:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 717 Td (npm start) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 692 Td (Then open:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 667 Td (http://localhost:3000) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 642 Td (To run the R command-line analysis after R is installed:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 617 Td (Rscript run_analysis.R) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 592 Td (To run the R Shiny app:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 567 Td (Rscript -e "shiny::runApp\('.', host='127.0.0.1', port=3838\)") Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 542 Td (Then open:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 517 Td (http://127.0.0.1:3838) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 478 Td (16. Project Files) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 448 Td (Important files:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 423 Td (\267 R/fx_engine.R: R modelling engine.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 406 Td (\267 app.R: R Shiny dashboard.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 389 Td (\267 run_analysis.R: command-line R analysis.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 372 Td (\267 data/eurusd_sample.csv: sample EUR/USD data.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 355 Td (\267 public/index.html: web dashboard page.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 338 Td (\267 public/app.js: browser simulation and chart logic.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 321 Td (\267 public/styles.css: dashboard styling.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 304 Td (\267 server.js: local website server.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 267 Td (17. Results Interpretation) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 237 Td (The dashboard should be interpreted as a scenario and risk analysis tool. The expected) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 222 Td (terminal value gives the average simulated outcome, but the terminal distribution is more) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 207 Td (important because it shows the range of possible outcomes.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 182 Td (The VaR value gives a downside threshold. The barrier option prices show the model value of) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 167 Td (hedging contracts that only activate when the exchange rate touches a chosen lower barrier.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 142 Td (If volatility increases, the simulated distribution becomes wider, VaR becomes more severe,) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 127 Td (and barrier activation probabilities usually increase.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 88 Td (18. Limitations) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 13 0 R >>
+endobj
+15 0 obj
+<< /Length 2555 >>
+stream
+0.10 0.13 0.18 rg
+BT /F2 9 Tf 50 772 Td (AI-Driven FX Risk Forecasting Project) Tj ET
+0.78 0.81 0.86 RG 0.75 w 50 760 m 545 760 l S
+BT /F1 8 Tf 500 28 Td (Page 7) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 742 Td (The model has important limitations:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 717 Td (\267 GBM assumes constant drift and volatility.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 700 Td (\267 Real FX markets can have jumps, regime changes, and volatility clustering.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 683 Td (\267 The sample dataset is small and should be replaced with live or larger historical) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 668 Td (  data for production use.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 651 Td (\267 Monte Carlo pricing has simulation error.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 634 Td (\267 The AI model is designed as an extension but not trained in the current version.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 597 Td (19. Future Enhancements) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 567 Td (Future improvements can include:) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 542 Td (\267 Real-time forex API integration.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 525 Td (\267 LSTM forecasting in R with Keras.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 508 Td (\267 Transformer-based financial forecasting.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 491 Td (\267 Multi-currency support.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 474 Td (\267 More option types such as up-and-out, up-and-in, and double-barrier options.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 457 Td (\267 Backtesting of forecast accuracy.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 68 440 Td (\267 Stress testing with crisis scenarios.) Tj ET
+0.02 0.08 0.18 rg
+BT /F2 15 Tf 50 403 Td (20. Conclusion) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 373 Td (This project demonstrates how artificial intelligence concepts, stochastic modelling, Monte) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 358 Td (Carlo simulation, Value at Risk, and exotic option pricing can be combined into one) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 343 Td (practical financial risk dashboard.) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 318 Td (It is suitable for presentation because it includes a working website, complete R source) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 303 Td (code, clear financial formulas, interactive scenario controls, and explainable outputs for) Tj ET
+0.10 0.13 0.18 rg
+BT /F1 10.5 Tf 50 288 Td (EUR/USD risk forecasting.) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 17 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> /Contents 15 0 R >>
+endobj
+17 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R] /Count 7 >>
+endobj
+18 0 obj
+<< /Type /Catalog /Pages 17 0 R >>
+endobj
+xref
+0 19
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000000154 00000 n 
+0000003449 00000 n 
+0000003586 00000 n 
+0000006819 00000 n 
+0000006956 00000 n 
+0000009867 00000 n 
+0000010004 00000 n 
+0000013384 00000 n 
+0000013522 00000 n 
+0000016484 00000 n 
+0000016623 00000 n 
+0000019582 00000 n 
+0000019721 00000 n 
+0000022329 00000 n 
+0000022468 00000 n 
+0000022566 00000 n 
+trailer
+<< /Size 19 /Root 18 0 R >>
+startxref
+22617
+%%EOF

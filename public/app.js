@@ -1,494 +1,224 @@
-const app = document.querySelector("#app");
+const samplePrices = [
+  1.0818, 1.0836, 1.0791, 1.0714, 1.0848, 1.0712, 1.0823,
+  1.1047, 1.1164, 1.0885, 1.0576, 1.0354, 1.0395, 1.0398,
+  1.0812, 1.1327, 1.1349, 1.1784, 1.1416, 1.1681, 1.1732,
+  1.1537, 1.1596, 1.1722, 1.1624, 1.1587, 1.0821, 1.1156
+];
 
-const state = {
-  token: localStorage.getItem("token"),
-  user: JSON.parse(localStorage.getItem("user") || "null"),
-  view: "dashboard",
-  data: {
-    dashboard: null,
-    users: [],
-    projects: [],
-    tasks: []
-  },
-  loading: false,
-  toast: ""
-};
+const $ = id => document.getElementById(id);
 
-const icons = {
-  dashboard: "▦",
-  projects: "□",
-  tasks: "✓",
-  logout: "↳",
-  plus: "+",
-  trash: "×"
-};
-
-function setAuth(token, user) {
-  state.token = token;
-  state.user = user;
-  if (token) {
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
-  } else {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-  }
+let seed = 123456789;
+function rand() {
+  seed = (1664525 * seed + 1013904223) >>> 0;
+  return seed / 4294967296;
 }
 
-function toast(message) {
-  state.toast = message;
-  render();
-  setTimeout(() => {
-    state.toast = "";
-    render();
-  }, 2800);
+function normal() {
+  const u = Math.max(rand(), 1e-12);
+  const v = Math.max(rand(), 1e-12);
+  return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
 }
 
-async function api(path, options = {}) {
-  const res = await fetch(path, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}),
-      ...(options.headers || {})
-    }
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || "Request failed");
-  return data;
+function mean(values) {
+  return values.reduce((a, b) => a + b, 0) / values.length;
 }
 
-async function loadAll() {
-  if (!state.token) return;
-  state.loading = true;
-  renderShell();
-  try {
-    const [dashboard, users, projects, tasks] = await Promise.all([
-      api("/api/dashboard"),
-      api("/api/users"),
-      api("/api/projects"),
-      api("/api/tasks")
-    ]);
-    state.data.dashboard = dashboard;
-    state.data.users = users.users;
-    state.data.projects = projects.projects;
-    state.data.tasks = tasks.tasks;
-  } catch (error) {
-    toast(error.message);
-    if (error.message === "Authentication required") logout();
-  } finally {
-    state.loading = false;
-    render();
-  }
+function sd(values) {
+  const m = mean(values);
+  return Math.sqrt(values.reduce((a, b) => a + (b - m) ** 2, 0) / (values.length - 1));
 }
 
-function serialize(form) {
-  return Object.fromEntries(new FormData(form).entries());
+function quantile(values, q) {
+  const sorted = [...values].sort((a, b) => a - b);
+  const pos = (sorted.length - 1) * q;
+  const base = Math.floor(pos);
+  const rest = pos - base;
+  return sorted[base + 1] === undefined ? sorted[base] : sorted[base] + rest * (sorted[base + 1] - sorted[base]);
 }
 
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    "\"": "&quot;",
-    "'": "&#039;"
-  })[char]);
-}
-
-function canManage() {
-  return ["admin", "manager"].includes(state.user?.role);
-}
-
-function canDeleteProject() {
-  return state.user?.role === "admin";
-}
-
-function formatStatus(value) {
-  return String(value).replace("-", " ");
-}
-
-function authView(mode = "login", error = "") {
-  app.innerHTML = `
-    <section class="auth-page">
-      <div class="auth-hero">
-        <div class="brand-mark">E</div>
-        <h1>Ethara Workbench</h1>
-        <p>Plan projects, assign work, track delivery health, and review role-based progress in one focused workspace.</p>
-      </div>
-      <div class="auth-panel">
-        <div class="auth-box">
-          <h2>${mode === "login" ? "Welcome back" : "Create account"}</h2>
-          <p>${mode === "login" ? "Use a demo account or register as a member." : "New registrations are created with member access."}</p>
-          <div class="tabs">
-            <button class="tab ${mode === "login" ? "active" : ""}" data-auth-tab="login">Sign in</button>
-            <button class="tab ${mode === "register" ? "active" : ""}" data-auth-tab="register">Register</button>
-          </div>
-          ${error ? `<div class="error">${escapeHtml(error)}</div>` : ""}
-          <form class="form" id="authForm">
-            ${mode === "register" ? `
-              <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" minlength="2" required placeholder="Your name" />
-              </div>
-            ` : ""}
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required value="${mode === "login" ? "admin@ethara.ai" : ""}" placeholder="you@example.com" />
-            </div>
-            <div class="field">
-              <label for="password">Password</label>
-              <input id="password" name="password" type="password" minlength="8" required value="${mode === "login" ? "Admin@123" : ""}" placeholder="Minimum 8 characters" />
-            </div>
-            <button class="button" type="submit">${mode === "login" ? "Sign in" : "Create account"}</button>
-          </form>
-          <div class="demo-box">
-            <strong>Demo users</strong><br />
-            admin@ethara.ai / Admin@123<br />
-            manager@ethara.ai / Manager@123<br />
-            member@ethara.ai / Member@123
-          </div>
-        </div>
-      </div>
-    </section>
-  `;
-
-  document.querySelectorAll("[data-auth-tab]").forEach(button => {
-    button.addEventListener("click", () => authView(button.dataset.authTab));
-  });
-
-  document.querySelector("#authForm").addEventListener("submit", async event => {
-    event.preventDefault();
-    const body = serialize(event.currentTarget);
-    try {
-      if (mode === "register") {
-        await api("/api/auth/register", { method: "POST", body: JSON.stringify(body) });
-        authView("login");
-        return toast("Account created. Please sign in.");
-      }
-      const data = await api("/api/auth/login", { method: "POST", body: JSON.stringify(body) });
-      setAuth(data.token, data.user);
-      await loadAll();
-    } catch (err) {
-      authView(mode, err.message);
-    }
-  });
-}
-
-function shell(content) {
-  app.innerHTML = `
-    <section class="shell">
-      <aside class="sidebar">
-        <div class="sidebar-brand">
-          <div class="brand-mark">E</div>
-          <div>
-            <h1>Ethara Workbench</h1>
-            <p>Project operations</p>
-          </div>
-        </div>
-        <nav class="nav">
-          ${navButton("dashboard", "Dashboard")}
-          ${navButton("projects", "Projects")}
-          ${navButton("tasks", "Tasks")}
-        </nav>
-        <div class="side-footer">
-          <div class="profile">
-            <strong>${escapeHtml(state.user.name)}</strong>
-            <span>${escapeHtml(state.user.email)} · ${escapeHtml(state.user.role)}</span>
-          </div>
-          <button class="button secondary" id="logoutBtn">${icons.logout} Sign out</button>
-        </div>
-      </aside>
-      <div class="main">
-        <div class="mobile-top">
-          <strong>${escapeHtml(state.user.name)} <span class="badge">${escapeHtml(state.user.role)}</span></strong>
-          <button class="button secondary" id="mobileLogout">${icons.logout}</button>
-        </div>
-        ${content}
-      </div>
-    </section>
-    ${state.toast ? `<div class="toast">${escapeHtml(state.toast)}</div>` : ""}
-  `;
-
-  document.querySelectorAll("[data-view]").forEach(button => {
-    button.addEventListener("click", () => {
-      state.view = button.dataset.view;
-      render();
-    });
-  });
-  document.querySelector("#logoutBtn")?.addEventListener("click", logout);
-  document.querySelector("#mobileLogout")?.addEventListener("click", logout);
-}
-
-function navButton(view, label) {
-  return `<button class="${state.view === view ? "active" : ""}" data-view="${view}"><span>${icons[view]}</span><span>${label}</span></button>`;
-}
-
-function dashboardView() {
-  const d = state.data.dashboard;
-  if (!d) return page("Dashboard", "Delivery health across your visible workspace.", `<div class="loading">Loading dashboard...</div>`);
-  const maxStatus = Math.max(1, ...Object.values(d.statusCounts));
-  const maxPriority = Math.max(1, ...Object.values(d.priorityCounts));
-  return page("Dashboard", "Delivery health across your visible workspace.", `
-    <div class="grid stats">
-      ${stat("Projects", d.totals.projects)}
-      ${stat("Tasks", d.totals.tasks)}
-      ${stat("Completed", d.totals.completed)}
-      ${stat("Overdue", d.totals.overdue)}
-      ${stat("Completion", `${d.totals.completion}%`)}
-    </div>
-    <div class="grid content-grid">
-      <section class="panel">
-        <div class="panel-head"><h3>Status breakdown</h3><span class="badge">Live</span></div>
-        <div class="bars">
-          ${Object.entries(d.statusCounts).map(([key, value]) => bar(key, value, maxStatus)).join("")}
-        </div>
-      </section>
-      <section class="panel">
-        <div class="panel-head"><h3>Priority load</h3><span class="badge">Risk</span></div>
-        <div class="bars">
-          ${Object.entries(d.priorityCounts).map(([key, value]) => bar(key, value, maxPriority)).join("")}
-        </div>
-      </section>
-    </div>
-    <section class="panel" style="margin-top:16px">
-      <div class="panel-head"><h3>Upcoming work</h3><button class="button secondary" data-view="tasks">Open tasks</button></div>
-      ${d.recentTasks.length ? `<div class="grid cards">${d.recentTasks.map(taskCard).join("")}</div>` : empty("No tasks are visible yet.")}
-    </section>
-  `);
-}
-
-function projectsView() {
-  const projects = state.data.projects;
-  return page("Projects", "Create delivery spaces, track progress, and keep ownership clear.", `
-    <div class="split">
-      ${canManage() ? projectForm() : `<div class="empty">Members can view assigned projects and update their task status.</div>`}
-      <div class="grid cards">
-        ${projects.length ? projects.map(projectCard).join("") : empty("No projects available.")}
-      </div>
-    </div>
-  `, bindProjects);
-}
-
-function tasksView() {
-  const tasks = state.data.tasks;
-  return page("Tasks", "Manage assignments with status, priority, assignee, and due dates.", `
-    <div class="split">
-      ${canManage() ? taskForm() : `<div class="empty">Members can update status on tasks assigned to them.</div>`}
-      <div class="grid cards">
-        ${tasks.length ? tasks.map(taskCard).join("") : empty("No tasks available.")}
-      </div>
-    </div>
-  `, bindTasks);
-}
-
-function page(title, subtitle, body, bind) {
-  shell(`
-    <header class="topbar">
-      <div class="section-title">
-        <h2>${title}</h2>
-        <p>${subtitle}</p>
-      </div>
-      <span class="badge">${escapeHtml(state.user.role)}</span>
-    </header>
-    ${state.loading ? `<div class="loading">Loading workspace...</div>` : body}
-  `);
-  if (!state.loading && bind) bind();
-}
-
-function stat(label, value) {
-  return `<div class="stat"><span>${label}</span><strong>${value}</strong></div>`;
-}
-
-function bar(label, value, max) {
-  return `
-    <div class="bar-row">
-      <div class="bar-label"><span>${formatStatus(label)}</span><span>${value}</span></div>
-      <div class="bar"><i style="--w:${Math.max(4, (value / max) * 100)}%"></i></div>
-    </div>
-  `;
-}
-
-function projectForm() {
-  return `
-    <section class="panel">
-      <div class="panel-head"><h3>New project</h3><span class="badge">${icons.plus}</span></div>
-      <form class="form" id="projectForm">
-        <div class="field"><label>Name</label><input name="name" required minlength="3" placeholder="Project name" /></div>
-        <div class="field"><label>Description</label><textarea name="description" required minlength="10" placeholder="What will this project deliver?"></textarea></div>
-        <div class="field"><label>Status</label><select name="status"><option value="planning">Planning</option><option value="active">Active</option><option value="paused">Paused</option><option value="completed">Completed</option></select></div>
-        <div class="field"><label>Owner</label><select name="ownerId">${state.data.users.map(userOption).join("")}</select></div>
-        <div class="field"><label>Due date</label><input name="dueDate" type="date" required /></div>
-        <button class="button" type="submit">${icons.plus} Create project</button>
-      </form>
-    </section>
-  `;
-}
-
-function taskForm() {
-  return `
-    <section class="panel">
-      <div class="panel-head"><h3>New task</h3><span class="badge">${icons.plus}</span></div>
-      <form class="form" id="taskForm">
-        <div class="field"><label>Project</label><select name="projectId" required>${state.data.projects.map(projectOption).join("")}</select></div>
-        <div class="field"><label>Title</label><input name="title" required minlength="3" placeholder="Task title" /></div>
-        <div class="field"><label>Description</label><textarea name="description" required minlength="8" placeholder="Task details"></textarea></div>
-        <div class="field"><label>Assignee</label><select name="assigneeId" required>${state.data.users.map(userOption).join("")}</select></div>
-        <div class="field"><label>Status</label><select name="status">${statusOptions()}</select></div>
-        <div class="field"><label>Priority</label><select name="priority"><option value="medium">Medium</option><option value="high">High</option><option value="low">Low</option></select></div>
-        <div class="field"><label>Due date</label><input name="dueDate" type="date" required /></div>
-        <button class="button" type="submit">${icons.plus} Create task</button>
-      </form>
-    </section>
-  `;
-}
-
-function projectCard(project) {
-  return `
-    <article class="card">
-      <div>
-        <h3>${escapeHtml(project.name)}</h3>
-        <p>${escapeHtml(project.description)}</p>
-      </div>
-      <div class="meta">
-        <span class="badge project-${project.status}">${escapeHtml(project.status)}</span>
-        <span class="badge">${project.progress}% complete</span>
-        <span class="badge">${project.taskCount} tasks</span>
-      </div>
-      <div class="bar"><i style="--w:${project.progress || 4}%"></i></div>
-      <p>Owner: ${escapeHtml(project.owner?.name || "Unassigned")} · Due ${escapeHtml(project.dueDate)}</p>
-      ${canDeleteProject() ? `<div class="actions"><button class="button danger" data-delete-project="${project.id}">${icons.trash} Delete</button></div>` : ""}
-    </article>
-  `;
-}
-
-function taskCard(task) {
-  return `
-    <article class="card">
-      <div>
-        <h3>${escapeHtml(task.title)}</h3>
-        <p>${escapeHtml(task.description)}</p>
-      </div>
-      <div class="meta">
-        <span class="badge status ${task.status}">${formatStatus(task.status)}</span>
-        <span class="badge priority-${task.priority}">${escapeHtml(task.priority)}</span>
-      </div>
-      <p>${escapeHtml(task.project?.name || "No project")} · ${escapeHtml(task.assignee?.name || "Unassigned")} · Due ${escapeHtml(task.dueDate)}</p>
-      <div class="actions">
-        <select data-status-task="${task.id}">
-          ${statusOptions(task.status)}
-        </select>
-        ${canManage() ? `<button class="button danger" data-delete-task="${task.id}">${icons.trash} Delete</button>` : ""}
-      </div>
-    </article>
-  `;
-}
-
-function userOption(user) {
-  return `<option value="${user.id}">${escapeHtml(user.name)} (${escapeHtml(user.role)})</option>`;
-}
-
-function projectOption(project) {
-  return `<option value="${project.id}">${escapeHtml(project.name)}</option>`;
-}
-
-function statusOptions(selected = "todo") {
-  return ["todo", "in-progress", "review", "done"]
-    .map(status => `<option value="${status}" ${selected === status ? "selected" : ""}>${formatStatus(status)}</option>`)
-    .join("");
-}
-
-function empty(message) {
-  return `<div class="empty">${message}</div>`;
-}
-
-function bindProjects() {
-  document.querySelector("#projectForm")?.addEventListener("submit", async event => {
-    event.preventDefault();
-    try {
-      await api("/api/projects", { method: "POST", body: JSON.stringify(serialize(event.currentTarget)) });
-      event.currentTarget.reset();
-      toast("Project created");
-      await loadAll();
-    } catch (error) {
-      toast(error.message);
-    }
-  });
-
-  document.querySelectorAll("[data-delete-project]").forEach(button => {
-    button.addEventListener("click", async () => {
-      try {
-        await api(`/api/projects/${button.dataset.deleteProject}`, { method: "DELETE" });
-        toast("Project deleted");
-        await loadAll();
-      } catch (error) {
-        toast(error.message);
-      }
-    });
-  });
-}
-
-function bindTasks() {
-  document.querySelector("#taskForm")?.addEventListener("submit", async event => {
-    event.preventDefault();
-    try {
-      await api("/api/tasks", { method: "POST", body: JSON.stringify(serialize(event.currentTarget)) });
-      event.currentTarget.reset();
-      toast("Task created");
-      await loadAll();
-    } catch (error) {
-      toast(error.message);
-    }
-  });
-
-  document.querySelectorAll("[data-status-task]").forEach(select => {
-    select.addEventListener("change", async () => {
-      try {
-        await api(`/api/tasks/${select.dataset.statusTask}`, { method: "PUT", body: JSON.stringify({ status: select.value }) });
-        toast("Task status updated");
-        await loadAll();
-      } catch (error) {
-        toast(error.message);
-      }
-    });
-  });
-
-  document.querySelectorAll("[data-delete-task]").forEach(button => {
-    button.addEventListener("click", async () => {
-      try {
-        await api(`/api/tasks/${button.dataset.deleteTask}`, { method: "DELETE" });
-        toast("Task deleted");
-        await loadAll();
-      } catch (error) {
-        toast(error.message);
-      }
-    });
-  });
-}
-
-function renderShell() {
-  if (!state.token) return authView();
-  const views = {
-    dashboard: dashboardView,
-    projects: projectsView,
-    tasks: tasksView
+function estimateParams(prices) {
+  const returns = [];
+  for (let i = 1; i < prices.length; i++) returns.push(Math.log(prices[i] / prices[i - 1]));
+  const sigmaPeriod = sd(returns);
+  const meanPeriod = mean(returns);
+  return {
+    mu: (meanPeriod + 0.5 * sigmaPeriod ** 2) * 12,
+    sigma: sigmaPeriod * Math.sqrt(12),
+    returns
   };
-  views[state.view]();
 }
 
-function render() {
-  if (!state.token) return authView();
-  renderShell();
+function simulateGbm(S0, mu, sigma, horizon, steps, paths) {
+  const dt = horizon / steps;
+  const matrix = Array.from({ length: steps + 1 }, () => new Float64Array(paths));
+  matrix[0].fill(S0);
+  for (let i = 1; i <= steps; i++) {
+    for (let j = 0; j < paths; j++) {
+      matrix[i][j] = matrix[i - 1][j] * Math.exp((mu - 0.5 * sigma ** 2) * dt + sigma * Math.sqrt(dt) * normal());
+    }
+  }
+  return matrix;
 }
 
-function logout() {
-  setAuth(null, null);
-  state.data = { dashboard: null, users: [], projects: [], tasks: [] };
-  authView();
+function barrierPrice(type, S0, K, barrier, rd, rf, T, vol, paths = 12000, steps = 126) {
+  const dt = T / steps;
+  let total = 0;
+  let totalSq = 0;
+  let touchedCount = 0;
+  for (let p = 0; p < paths; p++) {
+    let S = S0;
+    let minS = S0;
+    for (let i = 1; i <= steps; i++) {
+      S *= Math.exp((rd - rf - 0.5 * vol ** 2) * dt + vol * Math.sqrt(dt) * normal());
+      if (S < minS) minS = S;
+    }
+    const touched = minS <= barrier;
+    if (touched) touchedCount++;
+    const intrinsic = type === "call" ? Math.max(S - K, 0) : Math.max(K - S, 0);
+    const payoff = touched ? intrinsic : 0;
+    total += payoff;
+    totalSq += payoff ** 2;
+  }
+  const disc = Math.exp(-rd * T);
+  const avg = total / paths;
+  const variance = Math.max(totalSq / paths - avg ** 2, 0);
+  return {
+    price: disc * avg,
+    standardError: disc * Math.sqrt(variance / paths),
+    activationProbability: touchedCount / paths
+  };
 }
 
-if (state.token) {
-  loadAll();
-} else {
-  authView();
+function drawPaths(canvas, matrix, expected, varRate) {
+  const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const pad = 42;
+  ctx.clearRect(0, 0, width, height);
+  const paths = Math.min(90, matrix[0].length);
+  const all = [];
+  for (let i = 0; i < matrix.length; i++) {
+    for (let p = 0; p < paths; p++) all.push(matrix[i][p]);
+  }
+  all.push(expected, varRate);
+  const minY = Math.min(...all) * 0.985;
+  const maxY = Math.max(...all) * 1.015;
+  const x = i => pad + (i / (matrix.length - 1)) * (width - pad * 1.5);
+  const y = v => height - pad - ((v - minY) / (maxY - minY)) * (height - pad * 1.6);
+
+  ctx.strokeStyle = "#d7dee9";
+  ctx.lineWidth = 1;
+  for (let g = 0; g < 5; g++) {
+    const gy = pad / 2 + g * ((height - pad) / 5);
+    ctx.beginPath();
+    ctx.moveTo(pad, gy);
+    ctx.lineTo(width - pad / 2, gy);
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = "rgba(40,100,216,0.13)";
+  for (let p = 0; p < paths; p++) {
+    ctx.beginPath();
+    for (let i = 0; i < matrix.length; i++) {
+      if (i === 0) ctx.moveTo(x(i), y(matrix[i][p]));
+      else ctx.lineTo(x(i), y(matrix[i][p]));
+    }
+    ctx.stroke();
+  }
+
+  ctx.strokeStyle = "#c43d4b";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  for (let i = 0; i < matrix.length; i++) {
+    const avg = mean(Array.from(matrix[i]));
+    if (i === 0) ctx.moveTo(x(i), y(avg));
+    else ctx.lineTo(x(i), y(avg));
+  }
+  ctx.stroke();
 }
+
+function drawHistogram(canvas, values, varRate) {
+  const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const pad = 40;
+  ctx.clearRect(0, 0, width, height);
+  const bins = 34;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const counts = Array(bins).fill(0);
+  values.forEach(v => {
+    const idx = Math.min(bins - 1, Math.floor(((v - min) / (max - min)) * bins));
+    counts[idx]++;
+  });
+  const maxCount = Math.max(...counts);
+  const barW = (width - pad * 1.5) / bins;
+  counts.forEach((c, i) => {
+    const h = (c / maxCount) * (height - pad * 1.7);
+    ctx.fillStyle = "#79a9ee";
+    ctx.fillRect(pad + i * barW, height - pad - h, Math.max(1, barW - 2), h);
+  });
+  const vx = pad + ((varRate - min) / (max - min)) * (width - pad * 1.5);
+  ctx.strokeStyle = "#c43d4b";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(vx, pad / 2);
+  ctx.lineTo(vx, height - pad);
+  ctx.stroke();
+}
+
+function fmt(value, digits = 4) {
+  return Number(value).toFixed(digits);
+}
+
+function setTable(rows) {
+  $("table").innerHTML = rows.map(([label, value]) => `
+    <div class="row"><span>${label}</span><strong>${value}</strong></div>
+  `).join("");
+}
+
+function run() {
+  seed = 123456789;
+  const S0 = Number($("spot").value);
+  const horizon = Number($("horizon").value);
+  const steps = Number($("steps").value);
+  const paths = Number($("paths").value);
+  const strike = Number($("strike").value);
+  const barrierCall = Number($("barrierCall").value);
+  const barrierPut = Number($("barrierPut").value);
+  const prices = [...samplePrices.slice(0, -1), S0];
+  const params = estimateParams(prices);
+  const matrix = simulateGbm(S0, params.mu, params.sigma, horizon, steps, paths);
+  const terminal = Array.from(matrix[matrix.length - 1]);
+  const expected = mean(terminal);
+  const varRate = quantile(terminal, 0.05);
+  const worst = Math.min(...terminal);
+  const best = Math.max(...terminal);
+  const probLoss = terminal.filter(v => v < S0).length / terminal.length;
+  const rd = 0.0375;
+  const rf = 0.035;
+  const call = barrierPrice("call", S0, strike, barrierCall, rd, rf, 1, params.sigma);
+  const put = barrierPrice("put", S0, strike, barrierPut, rd, rf, 1, params.sigma);
+
+  $("expected").textContent = fmt(expected);
+  $("varRate").textContent = fmt(varRate);
+  $("callPrice").textContent = fmt(call.price, 5);
+  $("putPrice").textContent = fmt(put.price, 5);
+  $("modelStats").textContent = `Drift ${(params.mu * 100).toFixed(2)}% | Vol ${(params.sigma * 100).toFixed(2)}% | ${paths.toLocaleString()} paths`;
+
+  drawPaths($("pathsChart"), matrix, expected, varRate);
+  drawHistogram($("histChart"), terminal, varRate);
+  setTable([
+    ["Annualized drift", `${(params.mu * 100).toFixed(2)}%`],
+    ["Annualized volatility", `${(params.sigma * 100).toFixed(2)}%`],
+    ["Worst terminal case", fmt(worst)],
+    ["Best terminal case", fmt(best)],
+    ["95% VaR loss from spot", fmt(Math.max(S0 - varRate, 0))],
+    ["Probability terminal loss", `${(probLoss * 100).toFixed(2)}%`],
+    ["Call barrier activation", `${(call.activationProbability * 100).toFixed(2)}%`],
+    ["Put barrier activation", `${(put.activationProbability * 100).toFixed(2)}%`]
+  ]);
+}
+
+$("run").addEventListener("click", run);
+run();
