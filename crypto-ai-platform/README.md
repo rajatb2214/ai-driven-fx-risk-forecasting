@@ -35,6 +35,7 @@ http://localhost:4000
 - Blockchain: `/blockchain.html`
 - Coin Creator: `/coin-creator.html`
 - Architecture: `/architecture.html`
+- Full Project Explanation: `docs/full_project_explanation.md`
 
 ## GitHub Pages Hosting
 
