@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | NeuroChain</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><div class="brand-mark">N</div><div><strong>NeuroChain</strong><span>AI trading lab</span></div></div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/dashboard.html" class="active">Dashboard</a>
+          <a href="/predictions.html">AI Signals</a>
+          <a href="/trading.html">Simulator</a>
+          <a href="/blockchain.html">Blockchain</a>
+          <a href="/coin-creator.html">Coin Launch</a>
+          <a href="/architecture.html">Architecture</a>
+        </nav>
+        <div class="network-card"><span>Network</span><strong>Polygon Mumbai</strong><small>Demo mode ready for testnet deployment</small></div>
+      </aside>
+      <main>
+        <header class="topbar">
+          <div><p class="eyebrow">Live crypto dashboard</p><h1>Market overview with AI forecast visualization.</h1></div>
+          <button id="connectWallet" class="primary-button" type="button">Connect Wallet</button>
+        </header>
+        <section class="metrics-grid">
+          <article class="metric"><span>Portfolio Value</span><strong id="portfolioValue">$25,000.00</strong><small id="portfolioDelta">Virtual account</small></article>
+          <article class="metric"><span>Best AI Signal</span><strong id="bestSignal">BTC BUY</strong><small id="bestSignalMeta">78% confidence</small></article>
+          <article class="metric"><span>Risk Exposure</span><strong id="riskScore">Medium</strong><small>Volatility and sentiment based</small></article>
+          <article class="metric"><span>Wallet</span><strong id="walletStatus">Not connected</strong><small id="walletAddress">MetaMask supported</small></article>
+        </section>
+        <section class="panel market-panel">
+          <div class="panel-title">
+            <div><p class="eyebrow">AI model output</p><h2>Coin Forecast Chart</h2></div>
+            <div class="segmented">
+              <button class="coin-tab active" data-coin="BTC" type="button">BTC</button>
+              <button class="coin-tab" data-coin="ETH" type="button">ETH</button>
+              <button class="coin-tab" data-coin="SOL" type="button">SOL</button>
+              <button class="coin-tab" data-coin="MATIC" type="button">MATIC</button>
+            </div>
+          </div>
+          <canvas id="priceChart" width="1100" height="420"></canvas>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

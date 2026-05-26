@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeuroChain Crypto AI Platform</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <div>
+            <strong>NeuroChain</strong>
+            <span>AI trading lab</span>
+          </div>
+        </div>
+        <nav>
+          <a href="/" class="active">Home</a>
+          <a href="/dashboard.html">Dashboard</a>
+          <a href="/predictions.html">AI Signals</a>
+          <a href="/trading.html">Simulator</a>
+          <a href="/blockchain.html">Blockchain</a>
+          <a href="/coin-creator.html">Coin Launch</a>
+          <a href="/architecture.html">Architecture</a>
+        </nav>
+        <div class="network-card">
+          <span>Network</span>
+          <strong>Polygon Mumbai</strong>
+          <small>Demo mode ready for testnet deployment</small>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI-driven cryptocurrency prediction and blockchain trading platform</p>
+            <h1>Forecast, trade, and launch crypto assets from one intelligent cockpit.</h1>
+          </div>
+          <button id="connectWallet" class="primary-button" type="button">Connect Wallet</button>
+        </header>
+
+        <section class="home-grid">
+          <article class="hero-panel">
+            <p class="eyebrow">NeuroChain final year project</p>
+            <h2>Complete AI + Blockchain crypto platform</h2>
+            <p>
+              This project combines crypto forecasting, simulated trading, wallet integration,
+              transaction records, and ERC-20 token launch planning in one presentation-ready system.
+            </p>
+            <div class="hero-actions">
+              <a class="link-button" href="/dashboard.html">Open Dashboard</a>
+              <a class="link-button ghost-link" href="/architecture.html">View Architecture</a>
+            </div>
+          </article>
+          <article class="visual-panel">
+            <canvas id="priceChart" width="900" height="360" aria-label="AI crypto forecast preview"></canvas>
+          </article>
+        </section>
+
+        <section id="dashboard" class="metrics-grid" aria-label="Market metrics">
+          <article class="metric">
+            <span>Portfolio Value</span>
+            <strong id="portfolioValue">$25,000.00</strong>
+            <small id="portfolioDelta">Virtual account</small>
+          </article>
+          <article class="metric">
+            <span>Best AI Signal</span>
+            <strong id="bestSignal">BTC BUY</strong>
+            <small id="bestSignalMeta">78% confidence</small>
+          </article>
+          <article class="metric">
+            <span>Risk Exposure</span>
+            <strong id="riskScore">Medium</strong>
+            <small>Based on volatility and sentiment</small>
+          </article>
+          <article class="metric">
+            <span>Wallet</span>
+            <strong id="walletStatus">Not connected</strong>
+            <small id="walletAddress">MetaMask supported</small>
+          </article>
+        </section>
+
+        <section class="workspace">
+          <section class="panel market-panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">Live market model</p>
+                <h2>Coin Forecast Chart</h2>
+              </div>
+              <div class="segmented" role="group" aria-label="Coin selector">
+                <button class="coin-tab active" data-coin="BTC" type="button">BTC</button>
+                <button class="coin-tab" data-coin="ETH" type="button">ETH</button>
+                <button class="coin-tab" data-coin="SOL" type="button">SOL</button>
+                <button class="coin-tab" data-coin="MATIC" type="button">MATIC</button>
+              </div>
+            </div>
+            <canvas id="priceChart" width="1100" height="420" aria-label="Price forecast chart"></canvas>
+          </section>
+
+          <section id="prediction" class="panel ai-panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">AI prediction engine</p>
+                <h2>LSTM-style Forecast</h2>
+              </div>
+              <button id="refreshModel" class="ghost-button" type="button">Run Model</button>
+            </div>
+            <div class="prediction-layout">
+              <div class="signal-card" id="signalCard">
+                <span id="selectedCoin">BTC</span>
+                <strong id="signalText">BUY</strong>
+                <small id="signalReason">Momentum and sentiment are positive.</small>
+              </div>
+              <div class="ai-stats">
+                <div>
+                  <span>Current Price</span>
+                  <strong id="currentPrice">$67,240.00</strong>
+                </div>
+                <div>
+                  <span>24h Prediction</span>
+                  <strong id="predictedPrice">$68,180.25</strong>
+                </div>
+                <div>
+                  <span>Confidence</span>
+                  <strong id="confidence">78%</strong>
+                </div>
+                <div>
+                  <span>Sentiment</span>
+                  <strong id="sentiment">Bullish</strong>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="two-column">
+          <section id="trading" class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">Trading simulator</p>
+                <h2>Virtual Buy/Sell Desk</h2>
+              </div>
+            </div>
+            <form id="tradeForm" class="trade-form">
+              <label>
+                Coin
+                <select id="tradeCoin">
+                  <option>BTC</option>
+                  <option>ETH</option>
+                  <option>SOL</option>
+                  <option>MATIC</option>
+                </select>
+              </label>
+              <label>
+                Amount
+                <input id="tradeAmount" type="number" min="0.01" step="0.01" value="0.25" />
+              </label>
+              <div class="button-row">
+                <button class="buy-button" data-side="BUY" type="submit">Buy</button>
+                <button class="sell-button" data-side="SELL" type="submit">Sell</button>
+              </div>
+            </form>
+            <div class="holdings" id="holdings"></div>
+          </section>
+
+          <section id="wallet" class="panel">
+            <div class="panel-title">
+              <div>
+                <p class="eyebrow">Blockchain integration</p>
+                <h2>Transaction Ledger</h2>
+              </div>
+            </div>
+            <div id="ledger" class="ledger"></div>
+          </section>
+        </section>
+
+        <section id="launch" class="panel launch-panel">
+          <div class="panel-title">
+            <div>
+              <p class="eyebrow">Coin creator module</p>
+              <h2>Create an ERC-20 Token</h2>
+            </div>
+          </div>
+          <form id="tokenForm" class="token-form">
+            <label>
+              Token Name
+              <input id="tokenName" type="text" value="Neuro Coin" />
+            </label>
+            <label>
+              Symbol
+              <input id="tokenSymbol" type="text" value="NRC" maxlength="8" />
+            </label>
+            <label>
+              Total Supply
+              <input id="tokenSupply" type="number" min="1000" step="1000" value="1000000" />
+            </label>
+            <button class="primary-button" type="submit">Generate Token Plan</button>
+          </form>
+          <div id="tokenPreview" class="token-preview"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

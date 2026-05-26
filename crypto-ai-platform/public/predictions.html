@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Signals | NeuroChain</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand"><div class="brand-mark">N</div><div><strong>NeuroChain</strong><span>AI trading lab</span></div></div>
+        <nav><a href="/">Home</a><a href="/dashboard.html">Dashboard</a><a href="/predictions.html" class="active">AI Signals</a><a href="/trading.html">Simulator</a><a href="/blockchain.html">Blockchain</a><a href="/coin-creator.html">Coin Launch</a><a href="/architecture.html">Architecture</a></nav>
+        <div class="network-card"><span>AI Stack</span><strong>LSTM Ready</strong><small>Designed for historical OHLCV data</small></div>
+      </aside>
+      <main>
+        <header class="topbar"><div><p class="eyebrow">Prediction engine</p><h1>Generate future prices, risk scores, and buy/sell signals.</h1></div><button id="refreshModel" class="primary-button" type="button">Run Model</button></header>
+        <section class="workspace">
+          <section class="panel market-panel">
+            <div class="panel-title"><div><p class="eyebrow">Forecast chart</p><h2>Selected Coin</h2></div><div class="segmented"><button class="coin-tab active" data-coin="BTC" type="button">BTC</button><button class="coin-tab" data-coin="ETH" type="button">ETH</button><button class="coin-tab" data-coin="SOL" type="button">SOL</button><button class="coin-tab" data-coin="MATIC" type="button">MATIC</button></div></div>
+            <canvas id="priceChart" width="1100" height="420"></canvas>
+          </section>
+          <section class="panel ai-panel">
+            <div class="panel-title"><div><p class="eyebrow">AI recommendation</p><h2>LSTM-style Output</h2></div></div>
+            <div class="prediction-layout">
+              <div class="signal-card" id="signalCard"><span id="selectedCoin">BTC</span><strong id="signalText">BUY</strong><small id="signalReason">Momentum and sentiment are positive.</small></div>
+              <div class="ai-stats"><div><span>Current Price</span><strong id="currentPrice">$67,240.00</strong></div><div><span>24h Prediction</span><strong id="predictedPrice">$68,180.25</strong></div><div><span>Confidence</span><strong id="confidence">78%</strong></div><div><span>Sentiment</span><strong id="sentiment">Bullish</strong></div></div>
+            </div>
+          </section>
+        </section>
+        <section class="feature-grid"><article><strong>Model Inputs</strong><p>Historical prices, volume, volatility, market cap, and sentiment indicators.</p></article><article><strong>Model Outputs</strong><p>Predicted price, confidence score, trend label, risk score, and trading signal.</p></article><article><strong>Upgrade Path</strong><p>Replace the demo scorer with TensorFlow or PyTorch LSTM training from Binance or CoinGecko data.</p></article></section>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

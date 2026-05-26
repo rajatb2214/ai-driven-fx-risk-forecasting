@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Blockchain | NeuroChain</title><link rel="stylesheet" href="/styles.css" /></head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand"><div class="brand-mark">N</div><div><strong>NeuroChain</strong><span>AI trading lab</span></div></div><nav><a href="/">Home</a><a href="/dashboard.html">Dashboard</a><a href="/predictions.html">AI Signals</a><a href="/trading.html">Simulator</a><a href="/blockchain.html" class="active">Blockchain</a><a href="/coin-creator.html">Coin Launch</a><a href="/architecture.html">Architecture</a></nav><div class="network-card"><span>Wallet</span><strong>MetaMask</strong><small>Polygon testnet target</small></div></aside>
+      <main>
+        <header class="topbar"><div><p class="eyebrow">Blockchain integration</p><h1>Connect wallets and preserve transaction records with blockchain-style hashes.</h1></div><button id="connectWallet" class="primary-button" type="button">Connect Wallet</button></header>
+        <section class="metrics-grid"><article class="metric"><span>Wallet</span><strong id="walletStatus">Not connected</strong><small id="walletAddress">MetaMask supported</small></article><article class="metric"><span>Network</span><strong>Polygon</strong><small>Low gas deployment target</small></article><article class="metric"><span>Smart Contract</span><strong>ERC-20</strong><small>OpenZeppelin standard</small></article><article class="metric"><span>Ledger</span><strong>Hash Based</strong><small>Demo transaction records</small></article></section>
+        <section class="feature-grid"><article><strong>Wallet Connection</strong><p>Frontend can request a MetaMask account and display the connected wallet address.</p></article><article><strong>Transaction Storage</strong><p>Trade actions generate transaction hashes in demo mode and can later call deployed contracts.</p></article><article><strong>Smart Contracts</strong><p>The included Solidity factory can create ERC-20 tokens for users on a Polygon testnet.</p></article></section>
+        <section class="panel"><div class="panel-title"><div><p class="eyebrow">Recent records</p><h2>Transaction Ledger</h2></div></div><div id="ledger" class="ledger"></div></section>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Coin Creator | NeuroChain</title><link rel="stylesheet" href="/styles.css" /></head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand"><div class="brand-mark">N</div><div><strong>NeuroChain</strong><span>AI trading lab</span></div></div><nav><a href="/">Home</a><a href="/dashboard.html">Dashboard</a><a href="/predictions.html">AI Signals</a><a href="/trading.html">Simulator</a><a href="/blockchain.html">Blockchain</a><a href="/coin-creator.html" class="active">Coin Launch</a><a href="/architecture.html">Architecture</a></nav><div class="network-card"><span>Token Standard</span><strong>ERC-20</strong><small>Name, symbol, and supply</small></div></aside>
+      <main>
+        <header class="topbar"><div><p class="eyebrow">Coin creator module</p><h1>Create a launch plan for a custom ERC-20 crypto token.</h1></div></header>
+        <section class="panel launch-panel"><div class="panel-title"><div><p class="eyebrow">Token details</p><h2>Generate Token Plan</h2></div></div><form id="tokenForm" class="token-form"><label>Token Name<input id="tokenName" type="text" value="Neuro Coin" /></label><label>Symbol<input id="tokenSymbol" type="text" value="NRC" maxlength="8" /></label><label>Total Supply<input id="tokenSupply" type="number" min="1000" step="1000" value="1000000" /></label><button class="primary-button" type="submit">Generate Token Plan</button></form><div id="tokenPreview" class="token-preview"></div></section>
+        <section class="feature-grid"><article><strong>Input</strong><p>User provides token name, symbol, and total supply.</p></article><article><strong>Contract</strong><p>Backend can generate a Solidity constructor using the ERC-20 standard.</p></article><article><strong>Deploy</strong><p>Future Hardhat flow can deploy the token to Polygon testnet from the connected wallet.</p></article></section>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

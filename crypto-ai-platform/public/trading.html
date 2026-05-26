@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Trading Simulator | NeuroChain</title><link rel="stylesheet" href="/styles.css" /></head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand"><div class="brand-mark">N</div><div><strong>NeuroChain</strong><span>AI trading lab</span></div></div><nav><a href="/">Home</a><a href="/dashboard.html">Dashboard</a><a href="/predictions.html">AI Signals</a><a href="/trading.html" class="active">Simulator</a><a href="/blockchain.html">Blockchain</a><a href="/coin-creator.html">Coin Launch</a><a href="/architecture.html">Architecture</a></nav><div class="network-card"><span>Mode</span><strong>Virtual Trading</strong><small>No real funds are used</small></div></aside>
+      <main>
+        <header class="topbar"><div><p class="eyebrow">Trading simulator</p><h1>Practice AI-assisted crypto trades with a virtual portfolio.</h1></div></header>
+        <section class="two-column">
+          <section class="panel"><div class="panel-title"><div><p class="eyebrow">Order ticket</p><h2>Buy/Sell Desk</h2></div></div><form id="tradeForm" class="trade-form"><label>Coin<select id="tradeCoin"><option>BTC</option><option>ETH</option><option>SOL</option><option>MATIC</option></select></label><label>Amount<input id="tradeAmount" type="number" min="0.01" step="0.01" value="0.25" /></label><div class="button-row"><button class="buy-button" data-side="BUY" type="submit">Buy</button><button class="sell-button" data-side="SELL" type="submit">Sell</button></div></form><div class="holdings" id="holdings"></div></section>
+          <section class="panel"><div class="panel-title"><div><p class="eyebrow">Portfolio</p><h2>Account Summary</h2></div></div><section class="metrics-grid single-row"><article class="metric"><span>Portfolio Value</span><strong id="portfolioValue">$25,000.00</strong><small id="portfolioDelta">Virtual cash</small></article><article class="metric"><span>Risk Exposure</span><strong id="riskScore">Medium</strong><small>AI risk profile</small></article></section><div id="ledger" class="ledger"></div></section>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

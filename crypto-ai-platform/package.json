@@ -1,0 +1,21 @@
+{
+  "name": "crypto-ai-platform",
+  "version": "1.0.0",
+  "description": "AI-driven cryptocurrency prediction, trading simulator, wallet, and token launch platform MVP.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "backend": "uvicorn backend.app.main:app --reload --port 8000"
+  },
+  "keywords": [
+    "crypto",
+    "ai",
+    "forecasting",
+    "blockchain",
+    "trading",
+    "erc20"
+  ],
+  "author": "",
+  "license": "MIT"
+}
